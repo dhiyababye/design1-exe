@@ -1,0 +1,641 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clothing - Sustainable Futures</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: #68825D;
+            color: white;
+            line-height: 1.6;
+        }
+        
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 40px;
+            background-color: #68825D;
+            box-shadow: 0 2px 15px rgba(0,0,0,0.1);
+        }
+        
+        .logo {
+            height: 40px;
+        }
+        
+        .logo img {
+            height: 100%;
+        }
+        
+        .nav {
+            display: flex;
+            gap: 30px;
+        }
+        
+        .nav a {
+            color: white;
+            text-decoration: none;
+            text-transform: uppercase;
+            font-size: 15px;
+            letter-spacing: 1px;
+            position: relative;
+            padding: 5px 0;
+            transition: all 0.3s ease;
+        }
+        
+        .nav a:after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: 0;
+            left: 0;
+            background-color: white;
+            transition: width 0.3s ease;
+        }
+        
+        .nav a:hover:after {
+            width: 100%;
+        }
+        
+        .nav a.active:after {
+            width: 100%;
+        }
+        
+        .cart-icon {
+            cursor: pointer;
+            font-size: 22px;
+            transition: transform 0.3s ease;
+        }
+        
+        .cart-icon:hover {
+            transform: scale(1.1);
+        }
+        
+        .search-container {
+            display: flex;
+            justify-content: center;
+            margin: 25px 0;
+        }
+        
+        .search-bar {
+            width: 80%;
+            max-width: 500px;
+            padding: 12px 20px;
+            border-radius: 30px;
+            border: none;
+            background-color: rgba(255, 255, 255, 0.9);
+            display: flex;
+            align-items: center;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+        }
+        
+        .search-bar:hover {
+            box-shadow: 0 4px 15px rgba(0,0,0,0.15);
+        }
+        
+        .search-bar input {
+            flex-grow: 1;
+            border: none;
+            outline: none;
+            padding-left: 10px;
+            font-size: 16px;
+            background: transparent;
+        }
+        
+        .product-card {
+            display: flex;
+            margin: 40px 8%;
+            border-radius: 25px;
+            overflow: hidden;
+            min-height: 400px;
+            box-shadow: 0 5px 25px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+        }
+        
+        .product-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        /* First product - Green */
+        .product-card:nth-child(1) {
+            background-color: #68825D;
+            color: white;
+        }
+        
+        /* Second product - Yellow */
+        .product-card:nth-child(2) {
+            background-color: #F5FFBA;
+            color: #444;
+        }
+        
+        /* Third product - Green */
+        .product-card:nth-child(3) {
+            background-color: #68825D;
+            color: white;
+        }
+        
+        /* Fourth product - Yellow */
+        .product-card:nth-child(4) {
+            background-color: #F5FFBA;
+            color: #444;
+        }
+        
+        .product-image {
+            width: 40%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 30px;
+        }
+        
+        .product-card:nth-child(1) .product-image,
+        .product-card:nth-child(3) .product-image {
+            background-color: #68825D;
+        }
+        
+        .product-card:nth-child(2) .product-image,
+        .product-card:nth-child(4) .product-image {
+            background-color: #F5FFBA;
+        }
+        
+        .product-image img {
+            max-width: 100%;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: transform 0.5s ease;
+        }
+        
+        .product-image img:hover {
+            transform: scale(1.03);
+        }
+        
+        .product-details {
+            padding: 40px;
+            width: 60%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+        
+        .product-details p {
+            font-size: 17px;
+            margin-bottom: 20px;
+            line-height: 1.8;
+        }
+        
+        .price-cart-container {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-top: 20px;
+            padding: 10px 0;
+        }
+        
+        .product-price {
+            font-weight: bold;
+            font-size: 24px;
+        }
+        
+        .add-to-cart {
+            border: none;
+            padding: 8px 15px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 14px;
+            transition: all 0.3s ease;
+        }
+
+        .product-card:nth-child(1) .add-to-cart,
+        .product-card:nth-child(3) .add-to-cart {
+            background-color: #F5FFBA;
+            color: #6A8D73;
+        }
+
+        .product-card:nth-child(2) .add-to-cart,
+        .product-card:nth-child(4) .add-to-cart {
+            background-color: #68825D;
+            color: white;
+        }
+        
+        .add-to-cart:hover {
+            opacity: 0.9;
+            transform: translateY(-2px);
+        }
+        
+        .product-card:nth-child(1) .price-cart-container,
+        .product-card:nth-child(3) .price-cart-container {
+            border-top: 1px solid rgba(255,255,255,0.3);
+        }
+        
+        .product-card:nth-child(2) .price-cart-container,
+        .product-card:nth-child(4) .price-cart-container {
+            border-top: 1px solid rgba(0,0,0,0.1);
+        }
+        
+        .contact-section {
+            text-align: center;
+            margin: 50px 8%;
+            padding: 30px;
+        }
+        
+        .contact-button {
+            display: inline-block;
+            padding: 15px 30px;
+            border: 2px solid #F5FFBA;
+            color: #F5FFBA;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: bold;
+            margin: 20px 0;
+            transition: all 0.3s ease;
+            letter-spacing: 1px;
+        }
+        
+        .contact-button:hover {
+            background-color: #F5FFBA;
+            color: #6A8D73;
+        }
+        
+        .newsletter-section {
+            background-color: #5B763F;  /* Changed from #5A7963 to #5B763F */
+            padding: 80px 8%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 -5px 20px rgba(0,0,0,0.1);
+        }
+        
+        .newsletter-image {
+            width: 35%;
+            padding: 20px;
+        }
+        
+        .newsletter-image img {
+            width: 100%;
+            border-radius: 20px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.2);
+        }
+        
+        .newsletter-form {
+            width: 60%;
+            padding: 0 20px;
+        }
+        
+        .newsletter-title {
+            font-size: 28px;
+            text-transform: uppercase;
+            margin-bottom: 30px;
+            text-align: center;
+            letter-spacing: 2px;
+        }
+        
+        .newsletter-form input, 
+        .newsletter-form textarea {
+            width: 100%;
+            padding: 15px;
+            margin-bottom: 20px;
+            border: 1px solid rgba(255,255,255,0.3);
+            background-color: rgba(255,255,255,0.1);
+            color: white;
+            border-radius: 8px;
+            font-size: 16px;
+            transition: all 0.3s ease;
+        }
+        
+        .newsletter-form input:focus, 
+        .newsletter-form textarea:focus {
+            outline: none;
+            border-color: #F5FFBA;
+            background-color: rgba(255,255,255,0.2);
+        }
+        
+        .newsletter-form input::placeholder, 
+        .newsletter-form textarea::placeholder {
+            color: rgba(255,255,255,0.7);
+        }
+        
+        .newsletter-form textarea {
+            height: 150px;
+            resize: vertical;
+        }
+        
+        .social-links {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 25px;
+            margin-top: 30px;
+        }
+        
+        .social-links p {
+            margin-right: 15px;
+            font-size: 17px;
+        }
+        
+        .social-icon {
+            color: white;
+            font-size: 22px;
+            transition: transform 0.3s ease;
+            display: inline-flex;
+            justify-content: center;
+            align-items: center;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background-color: rgba(255,255,255,0.1);
+            text-decoration: none;
+        }
+        
+        .social-icon:hover {
+            transform: translateY(-3px);
+            background-color: rgba(255,255,255,0.2);
+        }
+        
+        .intention-tag {
+            position: fixed;
+            left: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            background-color: #F5FFBA;
+            color: #6A8D73;
+            padding: 20px 5px;
+            writing-mode: vertical-rl;
+            text-orientation: mixed;
+            border-radius: 0 10px 10px 0;
+            font-weight: bold;
+            letter-spacing: 2px;
+            z-index: 10;
+            box-shadow: 2px 0 10px rgba(0,0,0,0.1);
+        }
+        
+        .product-container {
+            position: relative;
+            padding: 20px 0;
+        }
+
+        /* Cart popup styles */
+        .cart-popup {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 350px;
+            background-color: white;
+            color: #333;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 5px 30px rgba(0,0,0,0.3);
+            z-index: 1000;
+        }
+        
+        .cart-popup h3 {
+            margin-bottom: 20px;
+            color: #6A8D73;
+            text-align: center;
+            font-size: 22px;
+        }
+        
+        .close-btn {
+            position: absolute;
+            right: 15px;
+            top: 15px;
+            cursor: pointer;
+            font-weight: bold;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            background-color: #f1f1f1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            transition: all 0.3s ease;
+        }
+        
+        .close-btn:hover {
+            background-color: #e1e1e1;
+        }
+        
+        .overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.6);
+            z-index: 999;
+            backdrop-filter: blur(3px);
+        }
+        
+        @media (max-width: 1000px) {
+            .product-card {
+                flex-direction: column;
+            }
+            
+            .product-image, .product-details {
+                width: 100%;
+            }
+            
+            .newsletter-section {
+                flex-direction: column;
+            }
+            
+            .newsletter-image, .newsletter-form {
+                width: 100%;
+                margin-bottom: 30px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header Section -->
+    <div class="header">
+        <div class="logo">
+            <img src="/static/picture/designex%203.jpg" alt="My Screenshot">
+
+        </div>
+        <div class="nav">
+            <a href="index.html">HOME</a>
+            <a href="community.html">COMMUNITY</a>
+            <a href="clothing.html" class="active">CLOTHING</a>
+            <a href="accessories.html">ACCESSORIES</a>
+        </div>
+        <div class="cart-icon" onclick="toggleCart()">🛒</div>
+    </div>
+    
+    <!-- Search Bar -->
+    <div class="search-container">
+        <div class="search-bar">
+            <span>🔍</span>
+            <input type="text" placeholder="Search for products, brands and more">
+        </div>
+    </div>
+    
+    <!-- Product Listings -->
+    <div class="product-container">
+        <div class="intention-tag">DEFINED BY INTENTION</div>
+        
+        <!-- Product 1 - Green -->
+        <div class="product-card">
+            <div class="product-image">
+                <img src="/static/picture/clothes_1.jpg" alt="Clothes 1" style="width: 60%; height: auto;">
+
+            </div>
+            <div class="product-details">
+                <p>Effortlessly elegant and rooted in simplicity, this modern frock blends contemporary style with a calming, earthy palette. Designed in a soft pastel green, it exudes quiet confidence — perfect for those who love minimalism with a hint of playfulness. The tailored yet relaxed silhouette flatters every movement, making it ideal for both casual outings and elevated occasions. Made for the conscious woman, this dress pairs beautifully with natural accessories and a mindset of mindful living.</p>
+                <div class="price-cart-container">
+                    <div class="product-price">Rs.4000/-</div>
+                    <button class="add-to-cart" onclick="addToCart('Green Dress', 4000)">Add to cart</button>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Product 2 - Yellow -->
+        <div class="product-card">
+            <div class="product-details">
+                <p>Clean, refined, and purposefully designed, this earthy brown t-shirt from Sustainable Futures represents a commitment to both quality and sustainability. Crafted from 100% organic cotton, it offers a soft, breathable fit that's both comfortable and kind to the environment. The minimalist design, exudes a quiet elegance that transitions effortlessly from day to night. Perfect for those who value both style and sustainability, this shirt pairs seamlessly with natural accessories, adding a touch of conscientious sophistication to any wardrobe.</p>
+                <div class="price-cart-container">
+                    <div class="product-price">Rs.2500/-</div>
+                    <button class="add-to-cart" onclick="addToCart('Brown T-shirt', 2500)">Add to cart</button>
+                </div>
+            </div>
+            <div class="product-image">
+                <img src="/static/picture/clothes_2%20-%20Copy.jpg" alt="Clothes 2 Copy" style="width: 60%; height: auto;">
+
+            </div>
+        </div>
+        
+        <!-- Product 3 - Green -->
+        <div class="product-card">
+            <div class="product-image">
+                <img src="/static/picture/clothes_3.jpg" alt="Clothes 3" style="width: 60%; height: auto;">
+
+            </div>
+            <div class="product-details">
+                <p>Delicate and charming, this peach frock captures the essence of understated beauty with its soft, warm hue. The light, airy fabric flows gracefully, creating a flattering silhouette that moves with ease. Designed with a balanced mix of simplicity and refinement, it features subtle details that enhance its effortless elegance. Whether for a casual outing or a relaxed afternoon gathering, this dress embodies a timeless sense of femininity. Perfect for those who appreciate quiet sophistication with a touch of warmth.</p>
+                <div class="price-cart-container">
+                    <div class="product-price">Rs.4500/-</div>
+                    <button class="add-to-cart" onclick="addToCart('Peach Dress', 4500)">Add to cart</button>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Product 4 - Yellow -->
+        <div class="product-card">
+            <div class="product-details">
+                <p>This white cotton shirt, adorned with elegant marble prints, combines the classic appeal of a crisp shirt with a modern artistic twist. Made from 100% organic cotton, the shirt offers a comfortable fit while maintaining its crisp structure. Chic and stylish, this piece effortlessly elevates any wardrobe, blending art and fashion seamlessly. Perfect for those who appreciate both sophistication and sustainability, it's an ideal choice for both casual and semi-formal occasions.</p>
+                <div class="price-cart-container">
+                    <div class="product-price">Rs.4000/-</div>
+                    <button class="add-to-cart" onclick="addToCart('White Cotton Shirt', 4000)">Add to cart</button>
+                </div>
+            </div>
+            <div class="product-image">
+                <img src="/static/picture/clothes_4.jpg" alt="Clothes 4" style="width: 100%; height: auto;">
+
+            </div>
+        </div>
+    </div>
+    
+    <!-- Contact Section -->
+    <div class="contact-section">
+        <a href="mailto:hello@sustainablefutures.com" class="contact-button">Reach out at: hello@sustainablefutures.com</a>
+    </div>
+    
+    <!-- Newsletter Section -->
+    <div class="newsletter-section">
+        <div class="newsletter-image">
+            <img src="/api/placeholder/400/500" alt="Sustainable living">
+        </div>
+        <div class="newsletter-form">
+            <h2 class="newsletter-title">Sign up to receive newsletter</h2>
+            <input type="email" placeholder="your_email_id@gmail.com">
+            <textarea placeholder="Drop your messages here!"></textarea>
+            <div class="social-links">
+                <p>Follow Us On:</p>
+                <a href="#" class="social-icon">𝕏</a>
+                <a href="#" class="social-icon">📷</a>
+                <a href="#" class="social-icon">in</a>
+                <a href="#" class="social-icon">f</a>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Cart Popup -->
+    <div class="overlay" id="overlay"></div>
+    <div class="cart-popup" id="cartPopup">
+        <span class="close-btn" onclick="toggleCart()">✕</span>
+        <h3>Your Cart</h3>
+        <p id="cartEmpty">Your cart is empty.</p>
+        <div id="cartItems"></div>
+        <div id="cartTotal" style="margin-top: 15px; font-weight: bold; display: none;">Total: Rs.0/-</div>
+    </div>
+    
+    <script>
+        let cart = [];
+        let total = 0;
+        
+        function toggleCart() {
+            const cartPopup = document.getElementById('cartPopup');
+            const overlay = document.getElementById('overlay');
+            
+            if (cartPopup.style.display === 'block') {
+                cartPopup.style.display = 'none';
+                overlay.style.display = 'none';
+            } else {
+                cartPopup.style.display = 'block';
+                overlay.style.display = 'block';
+            }
+        }
+        
+        function addToCart(productName, price) {
+            cart.push({name: productName, price: price});
+            total += price;
+            updateCart();
+            
+            // Show a brief notification
+            alert(productName + " added to cart!");
+        }
+        
+        function updateCart() {
+            const cartItems = document.getElementById('cartItems');
+            const cartEmpty = document.getElementById('cartEmpty');
+            const cartTotal = document.getElementById('cartTotal');
+            
+            if (cart.length > 0) {
+                cartEmpty.style.display = 'none';
+                cartTotal.style.display = 'block';
+                
+                cartItems.innerHTML = '';
+                cart.forEach((item, index) => {
+                    cartItems.innerHTML += `<div style="margin-bottom: 10px;">
+                        <span>${item.name}</span>
+                        <span style="float: right;">Rs.${item.price}/-</span>
+                    </div>`;
+                });
+                
+                cartTotal.textContent = `Total: Rs.${total}/-`;
+            } else {
+                cartEmpty.style.display = 'block';
+                cartTotal.style.display = 'none';
+                cartItems.innerHTML = '';
+            }
+        }
+        
+        // Make search bar clickable
+        document.querySelector('.search-bar').addEventListener('click', function() {
+            document.querySelector('.search-bar input').focus();
+        });
+    </script>
+</body>
+</html>
