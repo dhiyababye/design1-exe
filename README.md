@@ -1,25 +1,54 @@
 ![Untitled-3](design.png)
-# **[Project Name]**
+# **Sustainable Futures - Artique**
 
 SUSTAINABLE FUTURES
 
 **DESIGN.EXE designathon 2025**
 
-> A short description of your project. Explain what your project does, what problem it solves, and why it's cool.
-
+> Sustainable Futures is a sustainable fashion website designed to promote eco-conscious living through stylish, ethical products. The project features a clean, user-friendly interface designed in Figma and built using HTML and CSS to ensure responsiveness and accessibility.
 
 ## **Link to figma file**
-Add the link here
+[Figma file - design exe_Artique](https://www.figma.com/design/fPOyknlyJlzwsKhEb0eQtV/Design-Exe---Artique?node-id=0-1&t=s8HSJpb2rQICU6SR-1)
 
 ## **Hosted url**
-Add the link here
+[Sustainable-Futures](https://design1-exe-47nh.vercel.app/)
 
 ## **Installation**
-How on earth can we set up your project up and running?
+1. Clone the repository
+
+bash:
+git clone https://github.com/your-username/sustainable-futures.git
+
+2.Navigate into the project folder
+
+bash:
+cd sustainable-futures
+Open the project in your browser
+
+3.Open the project in your browser
+Just open the index.html file with your browser — no build tools or installations required!
 
 ## **Steps to run**  
-Care to explain?
+1.Clone the repository
+
+bash:
+git clone https://github.com/your-username/sustainable-futures.git
+
+2. Go to the project directory
+
+bash:
+cd sustainable-futures
+
+3. Run the project
+Locate the index.html file
+Right-click and select “Open with browser” (or drag it into your browser window)
 
 ## **Acknowledgements**
-Give credit to any resources, tutorials, libraries helped you build your project.
+We’re grateful for the inspiration, tools, and resources that supported the creation of Sustainable Futures:
+
+> Figma – for intuitive and collaborative design tools.
+> Freepik -  for high-quality, free images.
+> Google Fonts – for beautiful and accessible typography.
+
+
 
